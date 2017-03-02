@@ -21,19 +21,6 @@
             <li>Id : ${book.id}, name : ${book.name}</li>
         </c:forEach>
     </ul>
-    <%--<h2>Sign in</h2>
-    <form action="welcome.jsp">
-        <%
-            String error = request.getParameter("error");
-            if (error != null) {
-                out.println(request.getParameter("error"));
-            }
-        %>
-        <input type="text" name="uname" value='Enter your name' required
-               onblur="if (this.value == '') {this.value = 'Enter your name';}"
-               onfocus="if (this.value == 'Enter your name') {this.value = '';}">
-        <input type="submit" value="Submit"><br/>
-    </form>--%>
 </div>
 </body>
 </html>

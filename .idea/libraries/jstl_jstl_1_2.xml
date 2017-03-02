@@ -3,6 +3,7 @@
     <properties maven-id="jstl:jstl:1.2" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/jstl/jstl/1.2/jstl-1.2.jar!/" />
+      <root url="jar://C:/postgresql-9.4.1211.jre7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
