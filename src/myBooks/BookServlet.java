@@ -35,7 +35,7 @@ public class BookServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");// Fixed problem with Cyrillic charset
         String name = req.getParameter("name");
         String author = req.getParameter("author");
         String year = req.getParameter("year");

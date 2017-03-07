@@ -38,13 +38,30 @@ public class Connect {
         ConnectToDb();
         String sql = "SELECT * FROM books;";
         ResultSet rs = stmt.executeQuery(sql);
-//        List<Book> books = new ArrayList<Book>();
         List<Book> books = new ArrayList<Book>();
             while ( rs.next() ) {
             long id = rs.getInt("id");
             String  name = rs.getString("bookname");
             String  author = rs.getString("bookauthor");
             int year  = rs.getInt("bookyear");
+            books.add(new Book((long) id, name, author, year));
+        }
+        rs.close();
+        stmt.close();
+        return books;
+    }
+
+    public List<Book> updateItem(long itemId) throws SQLException, ClassNotFoundException {
+        ConnectToDb();
+        String sql = "SELECT * FROM books WHERE id="+itemId;
+        ResultSet rs = stmt.executeQuery(sql);
+        List<Book> books = new ArrayList<Book>();
+        while ( rs.next() ) {
+            long id = rs.getInt("id");
+            String  name = rs.getString("bookname");
+            String  author = rs.getString("bookauthor");
+            int year  = rs.getInt("bookyear");
+            //Book book = new Book(id, name, author, year);
             books.add(new Book((long) id, name, author, year));
         }
         rs.close();

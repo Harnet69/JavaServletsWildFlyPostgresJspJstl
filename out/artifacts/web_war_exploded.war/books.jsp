@@ -46,7 +46,7 @@
             <td>${book.name}</td>
             <td>${book.author}</td>
             <td>${book.year}</td>
-            <td>Изменить</td>
+        <td><a href="updateBook?id=${book.id}">Изменить</a></td>
         </tr>
         </c:forEach>
         </tr>
