@@ -17,7 +17,7 @@ public class UpdateBookServlet extends HttpServlet {
         String id = req.getParameter("id");
         long itemId = Long.parseLong(id);
         try {
-            books = connect.updateItem(itemId);
+            books = connect.showUpdatingItem(itemId);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -26,6 +26,24 @@ public class UpdateBookServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         req.setAttribute("BookList", books);
         getServletContext().getRequestDispatcher("/updBook.jsp").forward(req, resp);
-        System.out.println("++++++++++++++++++++++++++++++++++++");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");// Fixed problem with Cyrillic charset
+        String id = req.getParameter("id");
+        long itemId = Long.parseLong(id);
+        String name = req.getParameter("name");
+        String author = req.getParameter("author");
+        String year = req.getParameter("year");
+        Connect connect = new Connect();
+        try {
+            connect.updateItem(itemId, name, author, year);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        resp.sendRedirect("getBooks");
     }
 }

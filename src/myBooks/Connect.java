@@ -51,7 +51,7 @@ public class Connect {
         return books;
     }
 
-    public List<Book> updateItem(long itemId) throws SQLException, ClassNotFoundException {
+    public List<Book> showUpdatingItem(long itemId) throws SQLException, ClassNotFoundException {
         ConnectToDb();
         String sql = "SELECT * FROM books WHERE id="+itemId;
         ResultSet rs = stmt.executeQuery(sql);
@@ -67,5 +67,14 @@ public class Connect {
         rs.close();
         stmt.close();
         return books;
+    }
+
+    public void updateItem(long id, String name, String author, String year) throws SQLException, ClassNotFoundException {
+        ConnectToDb();
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+name+" "+id+" "+author+" "+year);
+        String sql = "UPDATE books SET bookname ='"+name+"' ,bookauthor ='"+author+"' , bookyear ='"+year+"' WHERE id="+id;
+        stmt.executeUpdate(sql);
+        System.out.println("Книга автора " + author + " с названием " + name + " написанная в  " + year + " году изменена!");
+        stmt.close();
     }
 }
